@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>0012-bee-readme - The Bee RFC Book</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="0012-bee-readme.html" class="active">0012-bee-readme</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">The Bee RFC Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <ul>
+<li>Feature name: <code>bee-readme</code></li>
+<li>Start date: 2019-09-24</li>
+<li>RFC PR: <a href="https://github.com/iotaledger/bee-rfcs/pull/12">iotaledger/bee-rfcs#12</a></li>
+<li>Bee issue: <a href="https://github.com/iotaledger/bee/issues/56">iotaledger/bee#56</a></li>
+</ul>
+<h1><a class="header" href="#summary" id="summary">Summary</a></h1>
+<p>This RFC introduces a README for the Bee project, explaining that it will be
+a framework written in Rust allowing to write nodes participating in the IOTA
+network and tools interacting with it.</p>
+<h1><a class="header" href="#motivation" id="motivation">Motivation</a></h1>
+<p>In order to motivate our own work and explain to the community what we are doing,
+it is crucial to have a good README.</p>
+<h1><a class="header" href="#detailed-design" id="detailed-design">Detailed design</a></h1>
+<p>The README is available at
+<a href="https://github.com/SuperFluffy/bee-readme/blob/master/README.md"><code>SuperFluffy/bee-readme/README.md</code></a>
+and reproduced below:</p>
+<blockquote>
+<h1><a class="header" href="#the-iota-bee-framework" id="the-iota-bee-framework">The IOTA Bee framework</a></h1>
+<p>Bee is a Rust framework to build IOTA nodes and tools that interact with the IOTA network. The final product is envisioned to be a highly modular collection of foundational crates that can be mixed and matched, and extended upon.</p>
+<p>Bee may be seen as an effort to streamline the IOTA Foundation's different libraries into one fundamental collection of Rust crates. These will expose foreign function interfaces (FFIs) to be used in more high level languages, and form the basis for the next iteration of client APIs.</p>
+<h2><a class="header" href="#outline" id="outline">Outline</a></h2>
+<ul>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#milestones">Milestones</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#why-rust">Why Rust?</a></li>
+</ul>
+<h2><a class="header" href="#motivation-1" id="motivation-1">Motivation</a></h2>
+<p>Our primary motivation is to make IOTA an exemplary open source project, with
+great documentation, clear examples of increasing complexity, and well-tested
+code. Entry into the IOTA developer ecosystem should be as straight forward as
+possible, so that people can start contributing, extending, and building their
+ideas on top of the IOTA network using the Bee framework. As such, we want to
+be ready for development driven by our own dev and research teams, as well as
+novel ideas coming out of our community.</p>
+<p>Bee will provide one central reference implementation of the most important
+data structures and algorithms, which will be verified and eventually
+certified. By this approach, we hope that improvements in any core components
+will quickly propagate to all other libraries building on them, rather than
+having to fix each single implementation we encounter.</p>
+<p>The IOTA Foundation aims to allow machines of all performance levels to
+contribute to the IOTA network, from microcontrollers and single-board
+computers, to phones, web browsers, desktop machines and servers. We therefore
+want to implement Bee's constituent libraries from the ground up, to allow the
+import of each library on its own, with each library having as few dependencies
+as possible. Having microcontrollers in mind, we want these libraries to not
+rely on a runtime — this includes language runtimes such as garbage
+collection, but also OS integration (which, in the case of Rust, is provided by
+its <code>libstd</code> standard library). </p>
+<h2><a class="header" href="#milestones" id="milestones">Milestones</a></h2>
+<p>The Bee framework was primarily created to support the implementation of the
+IOTA <a href="https://coordicide.iota.org/">Coordicide</a>. As previously stated, on the
+path to Coordicide we aim to make this framework as open, vetted and usable as
+possible, by supporting the creation of tools, clients, nodes…</p>
+<p>Our proposed milestones are:</p>
+<ol>
+<li><strong>Fundamental crates</strong>: Specification and implementation of the Bee fundamental crates <code>bee-trinary</code>, <code>bee-model</code>, and <code>bee-crypto</code>. These are the essential bricks for IOTA development.</li>
+<li><strong>FFI</strong>: Foreign Function Interface to make the Bee crates available to other languages. The first project relying on Bee crates through FFI will be Trinity v2.
+<ul>
+<li>We will also investigate in how far WebAssembly, <code>wasm</code>, might be an intermediate milestone.</li>
+</ul>
+</li>
+<li><strong>Rust IRI</strong>: Specification and implementation of the node-specific crates <code>bee-network</code>, <code>bee-tangle</code>, <code>bee-api</code>, <code>bee-consensus</code>, and <code>bee-gossip</code>. To demonstrate the modularity and robustness of the Bee framework, a node for the current mainnet will be implemented. Some of these crates will be repurposed for the Coordicide node.</li>
+<li><strong>Coordicide</strong>: Specification and implementation of new Coordicide node-specific crates once research specifications are delivered.</li>
+</ol>
+<h2><a class="header" href="#contributing" id="contributing">Contributing</a></h2>
+<p>If you want to discuss Bee or have some questions about it, join us on the
+<a href="https://discord.iota.org/">IOTA Discord server</a> in the <code>#bee-dev</code> and
+<code>#bee-discussion</code> channels.</p>
+<p>If you want to contribute bug reports and pull requests or suggest new
+features, please see
+<a href="https://github.com/iotaledger/bee/blob/master/CONTRIBUTING.md"><code>bee/CONTRIBUTING.md</code></a>
+for guidelines on how to contribute. Please note that we have a Request for
+Comments (RFC) process in place to propose, discuss, and vote on new features
+entering the Bee framework. You can find more information at
+<a href="https://github.com/iotaledger/bee-rfcs/"><code>iotaledger/bee-rfcs</code></a>.</p>
+<h2><a class="header" href="#why-rust" id="why-rust">Why Rust?</a></h2>
+<p>The IOTA Foundation aims to allow machines of all performance levels to
+contribute to the IOTA network: from microcontrollers to phones and servers.
+Some of these systems will have minimal resources and lack an operating system.
+Microcontrollers aside, we also aim for energy efficiency, high performance,
+and a great user and developer experience.</p>
+<p>From the available choice of languages, we felt that Rust was the best fit.
+Rust being a system programming language, it operates at a high level of
+performance while providing strong memory safety guarantees. Together with its
+well-integrated modern tooling, this helps us iterate on our designs faster
+while being more confident that our code does what we intend it to do (without
+accessing uninitialized memory, double free, use after free, null pointer
+dereference, and buffer overflows that are all security concerns).</p>
+</blockquote>
+<h1><a class="header" href="#drawbacks" id="drawbacks">Drawbacks</a></h1>
+<p>None; a README is good practice and expected.</p>
+<h1><a class="header" href="#unresolved-questions" id="unresolved-questions">Unresolved questions</a></h1>
+<ul>
+<li>Is this README understandable?</li>
+<li>Are any points unclear?</li>
+<li>Are any points missing that should be added?</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
